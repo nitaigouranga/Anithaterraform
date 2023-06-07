@@ -3,12 +3,12 @@
 A key pair is a combination of a public key that is used to encrypt data and a private key that is used to decrypt data. For more information about key pairs, ensure you are signed into the AWS console and then review Amazon EC2 Key Pairs in the Amazon EC2 User Guide for Linux Instances.
 
 ## creating ssh-key 
-
+```
 resource "tls_private_key" "pk" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
-
+```
 resource "aws_key_pair" "key_pair" {
   key_name   = "key"       # Create a "myKey" to AWS!!
   public_key = tls_private_key.pk.public_key_openssh
